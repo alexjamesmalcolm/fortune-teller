@@ -7,16 +7,16 @@ public class FortuneTeller {
 
 		System.out.print("Enter your first name: ");
 		String firstName = input.next();
-		
+
 		System.out.print("Enter your last name: ");
 		String lastName = input.next();
-		
+
 		System.out.print("Enter your age: ");
 		int age = input.nextInt();
-		
+
 		System.out.print("Enter your birth month (1-12): ");
-		int month = input.nextInt();
-		
+		double month = input.nextInt();
+
 		System.out.println("Enter your favorite ROYGBIV color,");
 		System.out.println("or if you don't know what ROYGBIV is,");
 		System.out.print("enter \"Help\": ");
@@ -27,14 +27,14 @@ public class FortuneTeller {
 			System.out.print("Enter your favorite ROYGBIV color: ");
 			color = input.next();
 		}
-		
+
 		System.out.print("How many siblings do you have? ");
 		int siblings = input.nextInt();
 
 		input.close();
 
 		int yearsToRetirement = 0;
-		int bankBalance = 0;
+		double bankBalance = 0;
 		String location = "";
 		String transportation = "";
 
@@ -85,9 +85,23 @@ public class FortuneTeller {
 			System.exit(0);
 		}
 
+		int multiplier;
+		if (month >= 1 && month <= 4) {
+			multiplier = 1000000;
+		} else if (month >= 5 && month <= 8) {
+			multiplier = 5000000;
+		} else if (month >= 9 && month <= 12) {
+			multiplier = 500000;
+		} else {
+			multiplier = 0;
+		}
+		bankBalance = month * multiplier + 2 * multiplier / 10 * (Math.random() - 0.5);
+		bankBalance = bankBalance - (bankBalance % 0.01);
+
 		System.out.println(yearsToRetirement);
 		System.out.println(bankBalance);
 		System.out.println(location);
 		System.out.println(transportation);
+
 	}
 }
