@@ -126,7 +126,7 @@ public class FortuneTeller {
 			multiplier = 0;
 		}
 		
-		bankBalance = month * multiplier + 2 * multiplier / 10 * (Math.random() - 0.5);
+		bankBalance = multiplier + 2 * multiplier / 10 * (Math.random() - 0.5);
 		bankBalance = Math.floor(100 * (bankBalance % 1)) / 100 + Math.floor(bankBalance);
 
 		String message = firstName + " " + lastName + " will retire in " + yearsToRetirement + " years with $"
