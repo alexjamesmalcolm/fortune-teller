@@ -53,6 +53,33 @@ public class FortuneTeller {
 			location = "Pyongyang, North Korea";
 		}
 
+		switch (color.toLowerCase()) {
+		case "red":
+			transportation = "Apollo Arrow";
+			break;
+		case "orange":
+			transportation = "Lexus LFA";
+			break;
+		case "yellow":
+			transportation = "AC Cobra";
+			break;
+		case "green":
+			transportation = "BMW i8";
+			break;
+		case "blue":
+			transportation = "Jeep Wrangler";
+			break;
+		case "indigo":
+			transportation = "MINI Cooper";
+			break;
+		case "violet":
+			transportation = "Toyota Prius";
+			break;
+		default:
+			System.out.println("You misspelled a color, please try again.");
+			System.exit(0);
+		}
+
 		System.out.println(yearsToRetirement);
 		System.out.println(bankBalance);
 		System.out.println(location);
