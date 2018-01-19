@@ -81,8 +81,7 @@ public class FortuneTeller {
 			transportation = "Toyota Prius";
 			break;
 		default:
-			System.out.println("You misspelled a color, please try again.");
-			System.exit(0);
+			transportation = "2002 Renault Avantime";
 		}
 
 		int multiplier;
@@ -98,10 +97,14 @@ public class FortuneTeller {
 		bankBalance = month * multiplier + 2 * multiplier / 10 * (Math.random() - 0.5);
 		bankBalance = bankBalance - (bankBalance % 0.01);
 
-		System.out.println(yearsToRetirement);
-		System.out.println(bankBalance);
-		System.out.println(location);
-		System.out.println(transportation);
+		// System.out.println(yearsToRetirement);
+		// System.out.println(bankBalance);
+		// System.out.println(location);
+		// System.out.println(transportation);
+
+		// *[First Name]* *[Last Name]* will retire in *[# of years]* with *[bank balance]* in the bank, a vacation home in *[location]*, and travel by *[mode of transportation]*.
+		String message = firstName + " " + lastName + " will retire in " + yearsToRetirement + " years with $" + bankBalance + " in the bank, a vacation home in " + location + ", and travel in a " + transportation + ".";
+		System.out.println(message);
 
 	}
 }
