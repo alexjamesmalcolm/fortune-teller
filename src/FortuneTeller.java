@@ -33,7 +33,10 @@ public class FortuneTeller {
 		String transportation;
 		
 		if (age % 2 == 0) {
-		} else {}
+			yearsToRetirement = 62 - (age % 62);
+		} else {
+			yearsToRetirement = 66 - (age % 66);
+		}
 	}
 
 }
