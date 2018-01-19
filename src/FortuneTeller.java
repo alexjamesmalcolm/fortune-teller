@@ -32,21 +32,26 @@ public class FortuneTeller {
 		if (stringMonth.equalsIgnoreCase("quit")) {
 			System.exit(0);
 		} else {
-			month = Integer.parseInt(stringAge);
+			month = Integer.parseInt(stringMonth);
 		}
 
 		System.out.println("Enter your favorite ROYGBIV color,");
 		System.out.println("or if you don't know what ROYGBIV is,");
 		System.out.print("enter \"Help\": ");
-		String color = input.next().trim();
-		if (color.equalsIgnoreCase("quit")) {
-			System.exit(0);
-		} else if (color.toLowerCase().equals("help")) {
-			System.out.println("ROYGBIV is the seven colors that make up the rainbow:");
-			System.out.println("Red, Orange, Yellow, Green, Blue, Indigo, Violet.");
-			System.out.print("Enter your favorite ROYGBIV color: ");
+		String color;
+		boolean helpNeeded = false;
+		do {
 			color = input.next().trim();
-		}
+			helpNeeded = color.equalsIgnoreCase("help");
+			boolean quitNeeded = color.equalsIgnoreCase("quit");
+			if (quitNeeded) {
+				System.exit(0);
+			} else if (helpNeeded) {
+				System.out.println("ROYGBIV is the seven colors that make up the rainbow:");
+				System.out.println("Red, Orange, Yellow, Green, Blue, Indigo, Violet.");
+				System.out.print("Enter your favorite ROYGBIV color: ");
+			}
+		} while (helpNeeded);
 
 		System.out.print("How many siblings do you have? ");
 		String stringSiblings = input.next().trim();
