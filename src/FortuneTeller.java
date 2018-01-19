@@ -6,13 +6,15 @@ public class FortuneTeller {
 		Scanner input = new Scanner(System.in);
 
 		System.out.print("Enter your first name: ");
-		String firstName = input.next().trim();
+		String firstName = input.nextLine().trim();
+		firstName = firstName.substring(0, 1).toUpperCase() + firstName.substring(1, 0).toLowerCase();
 		if (firstName.equalsIgnoreCase("quit")) {
 			System.exit(0);
 		}
 
 		System.out.print("Enter your last name: ");
-		String lastName = input.next().trim();
+		String lastName = input.nextLine().trim();
+		lastName = lastName.substring(0, 1).toUpperCase() + lastName.substring(1, 0).toLowerCase();
 		if (lastName.equalsIgnoreCase("quit")) {
 			System.exit(0);
 		}
@@ -125,13 +127,13 @@ public class FortuneTeller {
 		} else {
 			multiplier = 0;
 		}
-		
-		bankBalance = multiplier + 2 * multiplier / 10 * (Math.random() - 0.5);
-		bankBalance = Math.floor(100 * (bankBalance % 1)) / 100 + Math.floor(bankBalance);
 
-		String message = firstName + " " + lastName + " will retire in " + yearsToRetirement + " years with $"
-				+ bankBalance + " in the bank, a vacation home in " + location + ", and travel in a " + transportation
-				+ ".";
+		bankBalance = multiplier + 2 * multiplier / 10 * (Math.random() - 0.5);
+		String formattedBankBalance = String.format("$%,.2f", bankBalance);// + String.format("%, d", bankBalance);
+
+		String message = firstName + " " + lastName + " will retire in " + yearsToRetirement + " years with "
+				+ formattedBankBalance + " in the bank, a vacation home in " + location + ", and travel in a "
+				+ transportation + ".";
 		System.out.println(message);
 
 	}
