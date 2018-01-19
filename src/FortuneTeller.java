@@ -16,8 +16,13 @@ public class FortuneTeller {
 		System.out.println("Enter your favorite ROYGBIV color,");
 		System.out.println("or if you don't know what ROYGBIV is,");
 		System.out.print("enter \"Help\": ");
-		
 		String color = input.next();
+		if (color.trim().toLowerCase().equals("help")) {
+			System.out.println("ROYGBIV is the seven colors that make up the rainbow:");
+			System.out.println("Red, Orange, Yellow, Green, Blue, Indigo, Violet.");
+			System.out.print("Enter your favorite ROYGBIV color: ");
+			color = input.next();
+		}
 		System.out.print("How many siblings do you have? ");
 		int siblings = input.nextInt();
 
