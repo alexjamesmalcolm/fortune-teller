@@ -6,30 +6,56 @@ public class FortuneTeller {
 		Scanner input = new Scanner(System.in);
 
 		System.out.print("Enter your first name: ");
-		String firstName = input.next();
+		String firstName = input.next().trim();
+		if (firstName.equalsIgnoreCase("quit")) {
+			System.exit(0);
+		}
 
 		System.out.print("Enter your last name: ");
-		String lastName = input.next();
+		String lastName = input.next().trim();
+		if (lastName.equalsIgnoreCase("quit")) {
+			System.exit(0);
+		}
 
 		System.out.print("Enter your age: ");
-		int age = input.nextInt();
+		String stringAge = input.next().trim();
+		int age = 0;
+		if (stringAge.equalsIgnoreCase("quit")) {
+			System.exit(0);
+		} else {
+			age = Integer.parseInt(stringAge);
+		}
 
 		System.out.print("Enter your birth month (1-12): ");
-		double month = input.nextInt();
+		String stringMonth = input.next().trim();
+		int month = 0;
+		if (stringMonth.equalsIgnoreCase("quit")) {
+			System.exit(0);
+		} else {
+			month = Integer.parseInt(stringAge);
+		}
 
 		System.out.println("Enter your favorite ROYGBIV color,");
 		System.out.println("or if you don't know what ROYGBIV is,");
 		System.out.print("enter \"Help\": ");
-		String color = input.next();
-		if (color.trim().toLowerCase().equals("help")) {
+		String color = input.next().trim();
+		if (color.equalsIgnoreCase("quit")) {
+			System.exit(0);
+		} else if (color.toLowerCase().equals("help")) {
 			System.out.println("ROYGBIV is the seven colors that make up the rainbow:");
 			System.out.println("Red, Orange, Yellow, Green, Blue, Indigo, Violet.");
 			System.out.print("Enter your favorite ROYGBIV color: ");
-			color = input.next();
+			color = input.next().trim();
 		}
 
 		System.out.print("How many siblings do you have? ");
-		int siblings = input.nextInt();
+		String stringSiblings = input.next().trim();
+		int siblings = -1;
+		if (stringSiblings.equalsIgnoreCase("quit")) {
+			System.exit(0);
+		} else {
+			siblings = Integer.parseInt(stringSiblings);
+		}
 
 		input.close();
 
@@ -97,13 +123,9 @@ public class FortuneTeller {
 		bankBalance = month * multiplier + 2 * multiplier / 10 * (Math.random() - 0.5);
 		bankBalance = bankBalance - (bankBalance % 0.01);
 
-		// System.out.println(yearsToRetirement);
-		// System.out.println(bankBalance);
-		// System.out.println(location);
-		// System.out.println(transportation);
-
-		// *[First Name]* *[Last Name]* will retire in *[# of years]* with *[bank balance]* in the bank, a vacation home in *[location]*, and travel by *[mode of transportation]*.
-		String message = firstName + " " + lastName + " will retire in " + yearsToRetirement + " years with $" + bankBalance + " in the bank, a vacation home in " + location + ", and travel in a " + transportation + ".";
+		String message = firstName + " " + lastName + " will retire in " + yearsToRetirement + " years with $"
+				+ bankBalance + " in the bank, a vacation home in " + location + ", and travel in a " + transportation
+				+ ".";
 		System.out.println(message);
 
 	}
