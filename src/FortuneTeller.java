@@ -7,15 +7,18 @@ public class FortuneTeller {
 
 		System.out.print("Enter your first name: ");
 		String firstName = input.nextLine().trim();
-		firstName = firstName.substring(0, 1).toUpperCase() + firstName.substring(1, 0).toLowerCase();
+		firstName = firstName.substring(0, 1).toUpperCase() + firstName.substring(1).toLowerCase();
+		String quitMessage = "Nobody likes a quitter...";
 		if (firstName.equalsIgnoreCase("quit")) {
+			System.out.println(quitMessage);
 			System.exit(0);
 		}
 
 		System.out.print("Enter your last name: ");
 		String lastName = input.nextLine().trim();
-		lastName = lastName.substring(0, 1).toUpperCase() + lastName.substring(1, 0).toLowerCase();
+		lastName = lastName.substring(0, 1).toUpperCase() + lastName.substring(1).toLowerCase();
 		if (lastName.equalsIgnoreCase("quit")) {
+			System.out.println(quitMessage);
 			System.exit(0);
 		}
 
@@ -23,6 +26,7 @@ public class FortuneTeller {
 		String stringAge = input.next().trim();
 		int age = 0;
 		if (stringAge.equalsIgnoreCase("quit")) {
+			System.out.println(quitMessage);
 			System.exit(0);
 		} else {
 			age = Integer.parseInt(stringAge);
@@ -32,6 +36,7 @@ public class FortuneTeller {
 		String stringMonth = input.next().trim();
 		int month = 0;
 		if (stringMonth.equalsIgnoreCase("quit")) {
+			System.out.println(quitMessage);
 			System.exit(0);
 		} else {
 			month = Integer.parseInt(stringMonth);
@@ -47,6 +52,7 @@ public class FortuneTeller {
 			helpNeeded = color.equalsIgnoreCase("help");
 			boolean quitNeeded = color.equalsIgnoreCase("quit");
 			if (quitNeeded) {
+				System.out.println(quitMessage);
 				System.exit(0);
 			} else if (helpNeeded) {
 				System.out.println("ROYGBIV is the seven colors that make up the rainbow:");
@@ -59,6 +65,7 @@ public class FortuneTeller {
 		String stringSiblings = input.next().trim();
 		int siblings = -1;
 		if (stringSiblings.equalsIgnoreCase("quit")) {
+			System.out.println(quitMessage);
 			System.exit(0);
 		} else {
 			siblings = Integer.parseInt(stringSiblings);
