@@ -13,7 +13,7 @@ public class FortuneTeller {
 		int age = input.nextInt();
 		System.out.print("Enter your birth month (1-12): ");
 		int month = input.nextInt();
-		System.out.println("Enter your favorite color in ROYGBIV,");
+		System.out.println("Enter your favorite ROYGBIV color,");
 		System.out.println("or if you don't know what ROYGBIV is,");
 		System.out.print("enter \"Help\": ");
 		
