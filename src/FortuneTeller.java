@@ -27,16 +27,35 @@ public class FortuneTeller {
 		int siblings = input.nextInt();
 
 		input.close();
-		int yearsToRetirement;
-		int bankBalance;
-		String location;
-		String transportation;
-		
+
+		int yearsToRetirement = 0;
+		int bankBalance = 0;
+		String location = "";
+		String transportation = "";
+
 		if (age % 2 == 0) {
 			yearsToRetirement = 62 - (age % 62);
 		} else {
 			yearsToRetirement = 66 - (age % 66);
 		}
-	}
 
+		if (siblings == 0) {
+			location = "Budva, Montenegro";
+		} else if (siblings == 1) {
+			location = "Venice, CA";
+		} else if (siblings == 2) {
+			location = "Santa Marta, Colombia";
+		} else if (siblings == 3) {
+			location = "Leuven, Belgium";
+		} else if (siblings > 3) {
+			location = "Munnar, India";
+		} else {
+			location = "Pyongyang, North Korea";
+		}
+
+		System.out.println(yearsToRetirement);
+		System.out.println(bankBalance);
+		System.out.println(location);
+		System.out.println(transportation);
+	}
 }
