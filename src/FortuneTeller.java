@@ -27,6 +27,13 @@ public class FortuneTeller {
 		int siblings = input.nextInt();
 
 		input.close();
+		int yearsToRetirement;
+		int bankBalance;
+		String location;
+		String transportation;
+		
+		if (age % 2 == 0) {
+		} else {}
 	}
 
 }
