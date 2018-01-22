@@ -7,7 +7,7 @@ public class FortuneTeller {
 
 		System.out.print("Enter your first name: ");
 		String firstName = input.nextLine().trim();
-		firstName = firstName.substring(0, 1).toUpperCase() + firstName.substring(1).toLowerCase();
+		firstName = upperFirstLetter(firstName);
 		String quitMessage = "Nobody likes a quitter...";
 		if (firstName.equalsIgnoreCase("quit")) {
 			System.out.println(quitMessage);
@@ -16,7 +16,7 @@ public class FortuneTeller {
 
 		System.out.print("Enter your last name: ");
 		String lastName = input.nextLine().trim();
-		lastName = lastName.substring(0, 1).toUpperCase() + lastName.substring(1).toLowerCase();
+		lastName = upperFirstLetter(lastName);
 		if (lastName.equalsIgnoreCase("quit")) {
 			System.out.println(quitMessage);
 			System.exit(0);
@@ -143,5 +143,18 @@ public class FortuneTeller {
 				+ transportation + ".";
 		System.out.println(message);
 
+	}
+
+	public static String upperFirstLetter(String str) {
+		for (int i = 0; i < str.length(); i++) {
+			String letter = str.substring(i, i + 1);
+			if (letter.equalsIgnoreCase(" ") && str.length() - 1 != i) {
+				String firstHalf = str.substring(0, i);
+				String secondHalf = str.substring(i + 2);
+				String nextLetter = str.substring(i + 1, i + 2).toUpperCase();
+				str = firstHalf + " " + nextLetter + secondHalf;
+			}
+		}
+		return str;
 	}
 }
