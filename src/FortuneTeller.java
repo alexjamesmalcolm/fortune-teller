@@ -41,18 +41,15 @@ public class FortuneTeller {
 		int siblings = queryInt(input, request, quitMessage);
 
 		input.close();
-
-		int yearsToRetirement = 0;
-		double balance = 0;
-		String location = "";
-		String car = "";
-
+		
+		int yearsToRetirement;
 		if (age % 2 == 0) {
 			yearsToRetirement = 62 - (age % 62);
 		} else {
 			yearsToRetirement = 66 - (age % 66);
 		}
-
+		
+		String location;
 		if (siblings == 0) {
 			location = "Budva, Montenegro";
 		} else if (siblings == 1) {
@@ -66,7 +63,8 @@ public class FortuneTeller {
 		} else {
 			location = "Pyongyang, North Korea";
 		}
-
+		
+		String car;
 		switch (color.toLowerCase()) {
 		case "red":
 			car = "Apollo Arrow";
@@ -104,7 +102,7 @@ public class FortuneTeller {
 			base = 0;
 		}
 
-		balance = base + 2 * base / 10 * (Math.random() - 0.5);
+		double balance = base + 2 * base / 10 * (Math.random() - 0.5);
 		String formattedBalance = String.format("$%,.2f", balance);
 
 		String message = upperFirstLetter(firstName) + " " + lastName + " will retire in " + yearsToRetirement
