@@ -24,9 +24,9 @@ public class FortuneTeller {
 		String color;
 		boolean helpNeeded = false;
 		do {
-			color = input.next().trim();
-			helpNeeded = color.equalsIgnoreCase("help");
-			boolean quitNeeded = color.equalsIgnoreCase("quit");
+			color = input.next().trim().toLowerCase();
+			helpNeeded = color.equals("help");
+			boolean quitNeeded = color.equals("quit");
 			if (quitNeeded) {
 				System.out.println(quitMessage);
 				System.exit(0);
@@ -41,14 +41,14 @@ public class FortuneTeller {
 		int siblings = queryInt(input, request, quitMessage);
 
 		input.close();
-		
+
 		int yearsToRetirement;
 		if (age % 2 == 0) {
 			yearsToRetirement = 62 - (age % 62);
 		} else {
 			yearsToRetirement = 66 - (age % 66);
 		}
-		
+
 		String location;
 		if (siblings == 0) {
 			location = "Budva, Montenegro";
@@ -63,31 +63,23 @@ public class FortuneTeller {
 		} else {
 			location = "Pyongyang, North Korea";
 		}
-		
+
 		String car;
-		switch (color.toLowerCase()) {
-		case "red":
+		if (color.equals("red")) {
 			car = "Apollo Arrow";
-			break;
-		case "orange":
+		} else if (color.equals("orange")) {
 			car = "Lexus LFA";
-			break;
-		case "yellow":
+		} else if (color.equals("yellow")) {
 			car = "AC Cobra";
-			break;
-		case "green":
+		} else if (color.equals("green")) {
 			car = "BMW i8";
-			break;
-		case "blue":
+		} else if (color.equals("blue")) {
 			car = "Jeep Wrangler";
-			break;
-		case "indigo":
+		} else if (color.equals("indigo")) {
 			car = "MINI Cooper";
-			break;
-		case "violet":
+		} else if (color.equals("violet")) {
 			car = "Toyota Prius";
-			break;
-		default:
+		} else {
 			car = "2002 Renault Avantime";
 		}
 
