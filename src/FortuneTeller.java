@@ -5,42 +5,17 @@ public class FortuneTeller {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 
-		System.out.print("Enter your first name: ");
-		String firstName = input.nextLine().trim();
-		firstName = upperFirstLetter(firstName);
-		String quitMessage = "Nobody likes a quitter...";
-		if (firstName.equalsIgnoreCase("quit")) {
-			System.out.println(quitMessage);
-			System.exit(0);
-		}
+		String request = "Enter your first name: ";
+		String firstName = queryString(input, request);
 
-		System.out.print("Enter your last name: ");
-		String lastName = input.nextLine().trim();
-		lastName = upperFirstLetter(lastName);
-		if (lastName.equalsIgnoreCase("quit")) {
-			System.out.println(quitMessage);
-			System.exit(0);
-		}
-
-		System.out.print("Enter your age: ");
-		String stringAge = input.next().trim();
-		int age = 0;
-		if (stringAge.equalsIgnoreCase("quit")) {
-			System.out.println(quitMessage);
-			System.exit(0);
-		} else {
-			age = Integer.parseInt(stringAge);
-		}
-
-		System.out.print("Enter your birth month (1-12): ");
-		String stringMonth = input.next().trim();
-		int month = 0;
-		if (stringMonth.equalsIgnoreCase("quit")) {
-			System.out.println(quitMessage);
-			System.exit(0);
-		} else {
-			month = Integer.parseInt(stringMonth);
-		}
+		request = "Enter your last name: ";
+		String lastName = queryString(input, request);
+		
+		request = "Enter your age: ";
+		int age = queryInt(input, request);
+		
+		request = "Enter your birth month (1-12): ";
+		int month = queryInt(input, request);
 
 		System.out.println("Enter your favorite ROYGBIV color,");
 		System.out.println("or if you don't know what ROYGBIV is,");
@@ -52,6 +27,7 @@ public class FortuneTeller {
 			helpNeeded = color.equalsIgnoreCase("help");
 			boolean quitNeeded = color.equalsIgnoreCase("quit");
 			if (quitNeeded) {
+				String quitMessage = "Nobody likes a quitter...";
 				System.out.println(quitMessage);
 				System.exit(0);
 			} else if (helpNeeded) {
@@ -60,23 +36,16 @@ public class FortuneTeller {
 				System.out.print("Enter your favorite ROYGBIV color: ");
 			}
 		} while (helpNeeded);
-
-		System.out.print("How many siblings do you have? ");
-		String stringSiblings = input.next().trim();
-		int siblings = -1;
-		if (stringSiblings.equalsIgnoreCase("quit")) {
-			System.out.println(quitMessage);
-			System.exit(0);
-		} else {
-			siblings = Integer.parseInt(stringSiblings);
-		}
+		
+		request = "How many siblings do you have? ";
+		int siblings = queryInt(input, request);
 
 		input.close();
 
 		int yearsToRetirement = 0;
-		double bankBalance = 0;
+		double balance = 0;
 		String location = "";
-		String transportation = "";
+		String car = "";
 
 		if (age % 2 == 0) {
 			yearsToRetirement = 62 - (age % 62);
@@ -100,52 +69,78 @@ public class FortuneTeller {
 
 		switch (color.toLowerCase()) {
 		case "red":
-			transportation = "Apollo Arrow";
+			car = "Apollo Arrow";
 			break;
 		case "orange":
-			transportation = "Lexus LFA";
+			car = "Lexus LFA";
 			break;
 		case "yellow":
-			transportation = "AC Cobra";
+			car = "AC Cobra";
 			break;
 		case "green":
-			transportation = "BMW i8";
+			car = "BMW i8";
 			break;
 		case "blue":
-			transportation = "Jeep Wrangler";
+			car = "Jeep Wrangler";
 			break;
 		case "indigo":
-			transportation = "MINI Cooper";
+			car = "MINI Cooper";
 			break;
 		case "violet":
-			transportation = "Toyota Prius";
+			car = "Toyota Prius";
 			break;
 		default:
-			transportation = "2002 Renault Avantime";
+			car = "2002 Renault Avantime";
 		}
 
-		int multiplier;
+		int base;
 		if (month >= 1 && month <= 4) {
-			multiplier = 1000000;
+			base = 1000000;
 		} else if (month >= 5 && month <= 8) {
-			multiplier = 5000000;
+			base = 5000000;
 		} else if (month >= 9 && month <= 12) {
-			multiplier = 500000;
+			base = 500000;
 		} else {
-			multiplier = 0;
+			base = 0;
 		}
 
-		bankBalance = multiplier + 2 * multiplier / 10 * (Math.random() - 0.5);
-		String formattedBankBalance = String.format("$%,.2f", bankBalance);// + String.format("%, d", bankBalance);
+		balance = base + 2 * base / 10 * (Math.random() - 0.5);
+		String formattedBalance = String.format("$%,.2f", balance);
 
 		String message = firstName + " " + lastName + " will retire in " + yearsToRetirement + " years with "
-				+ formattedBankBalance + " in the bank, a vacation home in " + location + ", and travel in a "
-				+ transportation + ".";
+				+ formattedBalance + " in the bank, a vacation home in " + location + ", and travel in a " + car + ".";
 		System.out.println(message);
 
 	}
 
-	public static String upperFirstLetter(String str) {
+	private static int queryInt(Scanner input, String request) {
+		System.out.print(request);
+		String answerAsString = input.next().trim();
+		int answer = -1;
+		if (answerAsString.equalsIgnoreCase("quit")) {
+			String quitMessage = "Nobody likes a quitter...";
+			System.out.println(quitMessage);
+			System.exit(0);
+		} else {
+			answer = Integer.parseInt(answerAsString);
+		}
+		return answer;
+	}
+
+	private static String queryString(Scanner input, String request) {
+		String answer;
+		System.out.print(request);
+		answer = input.nextLine().trim();
+		answer = upperFirstLetter(answer);
+		if (answer.equalsIgnoreCase("quit")) {
+			String quitMessage = "Nobody likes a quitter...";
+			System.out.println(quitMessage);
+			System.exit(0);
+		}
+		return answer;
+	}
+
+	private static String upperFirstLetter(String str) {
 		for (int i = 0; i < str.length(); i++) {
 			String letter = str.substring(i, i + 1);
 			if (letter.equalsIgnoreCase(" ") && str.length() - 1 != i) {
