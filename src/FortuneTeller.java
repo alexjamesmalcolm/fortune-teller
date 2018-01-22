@@ -4,18 +4,19 @@ public class FortuneTeller {
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
+		String quitMessage = "Nobody likes a quitter...";
 
 		String request = "Enter your first name: ";
-		String firstName = queryString(input, request);
+		String firstName = queryString(input, request, quitMessage);
 
 		request = "Enter your last name: ";
-		String lastName = queryString(input, request);
-		
+		String lastName = queryString(input, request, quitMessage);
+
 		request = "Enter your age: ";
-		int age = queryInt(input, request);
-		
+		int age = queryInt(input, request, quitMessage);
+
 		request = "Enter your birth month (1-12): ";
-		int month = queryInt(input, request);
+		int month = queryInt(input, request, quitMessage);
 
 		System.out.println("Enter your favorite ROYGBIV color,");
 		System.out.println("or if you don't know what ROYGBIV is,");
@@ -27,7 +28,6 @@ public class FortuneTeller {
 			helpNeeded = color.equalsIgnoreCase("help");
 			boolean quitNeeded = color.equalsIgnoreCase("quit");
 			if (quitNeeded) {
-				String quitMessage = "Nobody likes a quitter...";
 				System.out.println(quitMessage);
 				System.exit(0);
 			} else if (helpNeeded) {
@@ -36,9 +36,9 @@ public class FortuneTeller {
 				System.out.print("Enter your favorite ROYGBIV color: ");
 			}
 		} while (helpNeeded);
-		
+
 		request = "How many siblings do you have? ";
-		int siblings = queryInt(input, request);
+		int siblings = queryInt(input, request, quitMessage);
 
 		input.close();
 
@@ -107,18 +107,18 @@ public class FortuneTeller {
 		balance = base + 2 * base / 10 * (Math.random() - 0.5);
 		String formattedBalance = String.format("$%,.2f", balance);
 
-		String message = firstName + " " + lastName + " will retire in " + yearsToRetirement + " years with "
-				+ formattedBalance + " in the bank, a vacation home in " + location + ", and travel in a " + car + ".";
+		String message = upperFirstLetter(firstName) + " " + lastName + " will retire in " + yearsToRetirement
+				+ " years with " + formattedBalance + " in the bank, a vacation home in " + location
+				+ ", and travel in a " + car + ".";
 		System.out.println(message);
 
 	}
 
-	private static int queryInt(Scanner input, String request) {
+	private static int queryInt(Scanner input, String request, String quitMessage) {
 		System.out.print(request);
 		String answerAsString = input.next().trim();
 		int answer = -1;
 		if (answerAsString.equalsIgnoreCase("quit")) {
-			String quitMessage = "Nobody likes a quitter...";
 			System.out.println(quitMessage);
 			System.exit(0);
 		} else {
@@ -127,13 +127,12 @@ public class FortuneTeller {
 		return answer;
 	}
 
-	private static String queryString(Scanner input, String request) {
+	private static String queryString(Scanner input, String request, String quitMessage) {
 		String answer;
 		System.out.print(request);
 		answer = input.nextLine().trim();
 		answer = upperFirstLetter(answer);
 		if (answer.equalsIgnoreCase("quit")) {
-			String quitMessage = "Nobody likes a quitter...";
 			System.out.println(quitMessage);
 			System.exit(0);
 		}
@@ -148,6 +147,9 @@ public class FortuneTeller {
 				String secondHalf = str.substring(i + 2);
 				String nextLetter = str.substring(i + 1, i + 2).toUpperCase();
 				str = firstHalf + " " + nextLetter + secondHalf;
+			} else if (i == 0) {
+				String remainder = str.substring(i + 1);
+				str = letter.toUpperCase() + remainder;
 			}
 		}
 		return str;
